@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -56,15 +58,32 @@ fun MainScreen(
 
     Scaffold(
         topBar = {
-            HomeTopBar {}
+            HomeTopBar(
+                onClickSearchBar = {}
+            )
         },
-        modifier = Modifier,
         bottomBar = {
             MainNavigationBar(
                 currentDestination = currentDestination,
                 onNavigate = { navigation.navigateTo(it) },
             )
         },
+        floatingActionButton = {
+            if (MainDestination.Home in currentDestination) {
+                FloatingActionButton(
+                    onClick = { /*TODO*/ },
+                    containerColor = GoorleBlue,
+                    contentColor = Color.White,
+                    shape = CircleShape
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_add),
+                        contentDescription = null
+                    )
+                }
+            }
+
+        }
     ) { padding ->
         AnimatedNavHost(
             navController = navigation.navController,
@@ -77,7 +96,7 @@ fun MainScreen(
             composable(route = MainDestination.Character.route) {
                 CharacterScreen()
             }
-            composable(MainDestination.MyPage.route) {
+            composable(route = MainDestination.MyPage.route) {
                 MypageScreen()
             }
         }
@@ -85,7 +104,9 @@ fun MainScreen(
 }
 
 @Composable
-private fun HomeTopBar(onClickSearchBar: () -> Unit) {
+private fun HomeTopBar(
+    onClickSearchBar: () -> Unit
+) {
     Surface(
         modifier = Modifier
             .height(HomeTopBarHeightExtended)
@@ -127,7 +148,7 @@ private fun HomeTopBar(onClickSearchBar: () -> Unit) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = stringResource(id = R.string.where_to_go),
+                        text = stringResource(id = R.string.home_search_bar_placeholder),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF9E9E9E)
@@ -150,7 +171,7 @@ private fun MainNavigationBar(
             .fillMaxWidth()
             .height(NavigationBarHeight),
         color = Color.White,
-        shape = RoundedCornerShape(topStart = 40.dp, topEnd = 40.dp)
+        shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),

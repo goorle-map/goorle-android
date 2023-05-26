@@ -5,5 +5,43 @@
     <string name="home">홈</string>
     <string name="mypage">마이페이지</string>
 
-    <string name="where_to_go">어디로 가고 싶은가요?</string>
+    <string name="home_search_bar_placeholder">어디로 가고 싶은가요?</string>
+
+    <string name="home_section_title_01">어디론가 굴러갈 지도</string>
+    <string name="home_section_subtitle_01">7가지 테마로 뭉쳐진 구름 장소를 확인해보세요</string>
+    <string name="home_section_title_02">구를 지도</string>
+    <string name="home_section_subtitle_02">지역별 구를 장소를 확인해보세요</string>
+    <string name="home_section_title_03">구를 Picker</string>
+    <string name="home_section_subtitle_03">다른 사람이 저장한 장소를 확인해보세요</string>
+    <string name="home_section_title_04">최근 댓글</string>
+    <string name="home_section_subtitle_04">실시간 댓글입니다</string>
+    <string name="home_section_title_05">굴러가는 패키지 여행</string>
+    <string name="home_section_subtitle_05">패키지 여행 설명</string>
+
+    <string name="home_section_item_01">속세를 떠나\n자연으로</string>
+    <string name="home_section_item_02">시간을 거스르는\n한옥 여행</string>
+    <string name="home_section_item_03">반려견과\n같이 갈래</string>
+    <string name="home_section_item_04">시골 할머니 댁으로,\n촌캉스</string>
+    <string name="home_section_item_05">시원한 바다,\n탁 트인 마음</string>
+    <string name="home_section_item_06">도심 한복판\n럭셔리 호캉</string>
+    <string name="home_section_item_07">구르고 굴러\n관광명소까지</string>
+
+    <string name="seoul">서울</string>
+    <string name="busan">부산</string>
+    <string name="daegu">대구</string>
+    <string name="incheon">인천</string>
+    <string name="gwangju">광주</string>
+    <string name="daejeon">대전</string>
+    <string name="ulsan">울산</string>
+    <string name="sejong">세종</string>
+    <string name="gyeongi">경기</string>
+    <string name="gangwon">강원</string>
+    <string name="chungbook">충북</string>
+    <string name="chungnam">충남</string>
+    <string name="geonbook">전북</string>
+    <string name="geonnam">전남</string>
+    <string name="kyoungbook">경북</string>
+    <string name="kyoungnam">경남</string>
+    <string name="jeju">제주</string>
+
 </resources>
