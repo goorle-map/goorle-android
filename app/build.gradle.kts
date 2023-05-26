@@ -62,12 +62,15 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.viewmodel.ktx)
     implementation(libs.androidx.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.compose.ui.core)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material.iconscore)
     implementation(libs.compose.material3)
+
     implementation(libs.accompanist.webview)
+    implementation(libs.accompanist.navigation)
 
     implementation(libs.squareup.okhttp)
     implementation(libs.squareup.okhttp.logging)

@@ -4,6 +4,7 @@ org-jetbrains-kotlin = "1.8.10"
 
 androidx-activity = "1.6.1"
 androidx-lifecycle = "2.6.0"
+androidx-navigation = "2.5.3"
 androidx-splashscreen = "1.0.0"
 
 compose = "1.4.0-beta01"
@@ -29,6 +30,7 @@ junit = "4.13.2"
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
 androidx-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 
@@ -47,6 +49,7 @@ compose-material-iconsext = { module = "androidx.compose.material:material-icons
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 
 accompanist-webview = { module = "com.google.accompanist:accompanist-webview", version.ref = "accompanist" }
+accompanist-navigation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
 
 squareup-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 squareup-okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
