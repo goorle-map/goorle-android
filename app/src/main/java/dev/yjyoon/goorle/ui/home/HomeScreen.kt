@@ -127,7 +127,7 @@ fun HomeScreen() {
                 )
                 GoorleSectionTileB(
                     imageRes = R.drawable.img_gyeonggi,
-                    textRes = R.string.gyeongi,
+                    textRes = R.string.gyeonggi,
                     onClick = {}
                 )
                 GoorleSectionTileB(
@@ -137,7 +137,7 @@ fun HomeScreen() {
                 )
                 GoorleSectionTileB(
                     imageRes = R.drawable.img_chungbuk,
-                    textRes = R.string.chungbook,
+                    textRes = R.string.chungbuk,
                     onClick = {}
                 )
                 GoorleSectionTileB(
@@ -147,22 +147,22 @@ fun HomeScreen() {
                 )
                 GoorleSectionTileB(
                     imageRes = R.drawable.img_jeonbuk,
-                    textRes = R.string.geonbook,
+                    textRes = R.string.jeonbuk,
                     onClick = {}
                 )
                 GoorleSectionTileB(
                     imageRes = R.drawable.img_jeonnam,
-                    textRes = R.string.geonnam,
+                    textRes = R.string.jeonnam,
                     onClick = {}
                 )
                 GoorleSectionTileB(
                     imageRes = R.drawable.img_gyeongbuk,
-                    textRes = R.string.kyoungbook,
+                    textRes = R.string.gyeongbuk,
                     onClick = {}
                 )
                 GoorleSectionTileB(
                     imageRes = R.drawable.img_gyeongnam,
-                    textRes = R.string.kyoungnam,
+                    textRes = R.string.gyeongnam,
                     onClick = {}
                 )
                 GoorleSectionTileB(

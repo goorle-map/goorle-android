@@ -34,14 +34,23 @@
     <string name="daejeon">대전</string>
     <string name="ulsan">울산</string>
     <string name="sejong">세종</string>
-    <string name="gyeongi">경기</string>
+    <string name="gyeonggi">경기</string>
     <string name="gangwon">강원</string>
-    <string name="chungbook">충북</string>
+    <string name="chungbuk">충북</string>
     <string name="chungnam">충남</string>
-    <string name="geonbook">전북</string>
-    <string name="geonnam">전남</string>
-    <string name="kyoungbook">경북</string>
-    <string name="kyoungnam">경남</string>
+    <string name="jeonbuk">전북</string>
+    <string name="jeonnam">전남</string>
+    <string name="gyeongbuk">경북</string>
+    <string name="gyeongnam">경남</string>
     <string name="jeju">제주</string>
+
+    <string name="parking">장애인전용주차구역</string>
+    <string name="slope">출입구 경사로</string>
+    <string name="elevator">승강기</string>
+    <string name="lift">휠체어 리프트</string>
+    <string name="escalator">장애인 에스컬레이터</string>
+    <string name="restroom">장애인 화장실</string>
+    <string name="shower">장애인 샤워실</string>
+    <string name="accommodation">장애인 객실</string>
 
 </resources>
