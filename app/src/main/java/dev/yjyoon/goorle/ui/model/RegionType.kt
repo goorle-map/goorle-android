@@ -5,8 +5,8 @@ import androidx.annotation.StringRes
 import dev.yjyoon.goorle.R
 
 enum class RegionType(
-    @StringRes stringRes: Int,
-    @DrawableRes imageRes: Int
+    @StringRes val stringRes: Int,
+    @DrawableRes val imageRes: Int
 ) {
     Seoul(stringRes = R.string.seoul, imageRes = R.drawable.img_seoul),
     Busan(stringRes = R.string.busan, imageRes = R.drawable.img_busan),

@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,7 +30,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -44,12 +44,14 @@ import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.character.CharacterScreen
 import dev.yjyoon.goorle.ui.home.HomeScreen
 import dev.yjyoon.goorle.ui.mypage.MypageScreen
+import dev.yjyoon.goorle.ui.post.GridViewType
 import dev.yjyoon.goorle.ui.theme.GoorleBlue
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MainScreen(
-    viewModel: MainViewModel
+    viewModel: MainViewModel,
+    navigateToGrid: (GridViewType) -> Unit
 ) {
     val navController = rememberAnimatedNavController()
     val navigation = rememberMainNavigation(navController)
@@ -91,7 +93,9 @@ fun MainScreen(
             modifier = Modifier.padding(padding)
         ) {
             composable(route = MainDestination.Home.route) {
-                HomeScreen()
+                HomeScreen(
+                    navigateToGrid = navigateToGrid
+                )
             }
             composable(route = MainDestination.Character.route) {
                 CharacterScreen()
@@ -149,8 +153,7 @@ private fun HomeTopBar(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = stringResource(id = R.string.home_search_bar_placeholder),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.titleLarge,
                         color = Color(0xFF9E9E9E)
                     )
                 }

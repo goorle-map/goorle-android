@@ -1,4 +1,40 @@
 package dev.yjyoon.goorle.ui.post
 
-class GridActivity {
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import dev.yjyoon.goorle.ui.theme.GoorleTheme
+
+class GridActivity : ComponentActivity() {
+
+    private val viewModel: GridViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val type: GridViewType =
+            requireNotNull(intent.getSerializableExtra(EXTRA_KEY_TYPE)) as GridViewType
+
+        setContent {
+            GoorleTheme {
+                GridScreen(
+                    viewModel = viewModel,
+                    type = type,
+                    onBack = ::finish
+                )
+            }
+        }
+    }
+
+    companion object {
+        val EXTRA_KEY_TYPE = "type"
+
+        fun startActivity(context: Context, type: GridViewType) {
+            val intent = Intent(context, GridActivity::class.java).putExtra(EXTRA_KEY_TYPE, type)
+            context.startActivity(intent)
+        }
+    }
 }

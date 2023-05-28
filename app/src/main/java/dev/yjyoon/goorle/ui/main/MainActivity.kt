@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import dev.yjyoon.goorle.ui.post.GridActivity
+import dev.yjyoon.goorle.ui.post.GridViewType
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,8 +15,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GoorleTheme {
-                MainScreen(viewModel = viewModel)
+                MainScreen(
+                    viewModel = viewModel,
+                    navigateToGrid = ::startGridActivity
+                )
             }
         }
     }
+
+    private fun startGridActivity(type: GridViewType) = GridActivity.startActivity(this, type)
+
 }

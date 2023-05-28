@@ -5,8 +5,8 @@ import androidx.annotation.StringRes
 import dev.yjyoon.goorle.R
 
 enum class ThemeType(
-    @StringRes stringRes: Int,
-    @DrawableRes imageRes: Int
+    @StringRes val stringRes: Int,
+    @DrawableRes val imageRes: Int
 ) {
     Nature(stringRes = R.string.home_section_item_01, imageRes = R.drawable.img_home_sec_01),
     Hanok(stringRes = R.string.home_section_item_02, imageRes = R.drawable.img_home_sec_02),

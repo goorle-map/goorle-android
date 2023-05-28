@@ -5,8 +5,8 @@ import androidx.annotation.StringRes
 import dev.yjyoon.goorle.R
 
 enum class FilterType(
-    @StringRes stringRes: Int,
-    @DrawableRes iconRes: Int
+    @StringRes val stringRes: Int,
+    @DrawableRes val iconRes: Int
 ) {
     Parking(stringRes = R.string.parking, iconRes = R.drawable.ic_parking),
     Slope(stringRes = R.string.slope, iconRes = R.drawable.ic_slope),
