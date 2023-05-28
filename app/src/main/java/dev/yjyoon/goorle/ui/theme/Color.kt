@@ -10,4 +10,6 @@ val GoorleRed = Color(0xFFFB5B51)
 
 val GoorleBlack = Color(0xFF171717)
 val GoorleWhite = Color(0xFFF2F2F7)
-val GoorleGray = Color(0xFFE0E0E0)
+val GoorleGrayE0 = Color(0xFFE0E0E0)
+val GoorleGray9E = Color(0xFF9E9E9E)
+val GoorleGray75 = Color(0xFF757575)
