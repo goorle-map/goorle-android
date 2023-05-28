@@ -47,3 +47,32 @@ fun GoorleSectionTileA(
         )
     }
 }
+
+@Composable
+fun GoorleSectionTileASmall(
+    modifier: Modifier = Modifier,
+    @DrawableRes imageRes: Int,
+    @StringRes textRes: Int,
+    onClick: () -> Unit
+) {
+    Box(modifier = Modifier.clickable { onClick() }) {
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = modifier.then(
+                Modifier
+                    .aspectRatio(3 / 4f)
+                    .clip(RoundedCornerShape(24.dp))
+            )
+        )
+        Text(
+            text = stringResource(id = textRes),
+            style = MaterialTheme.typography.titleLarge,
+            color = Color.White,
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 24.dp)
+                .align(Alignment.BottomStart)
+        )
+    }
+}
