@@ -10,67 +10,77 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import dev.yjyoon.goorle.R
 
-private val NotoSansKr = FontFamily(
+val NotoSansKr = FontFamily(
     Font(R.font.noto_sans_kr_regular, FontWeight.Normal),
     Font(R.font.noto_sans_kr_bold, FontWeight.Bold)
 )
 
 val Typography = Typography(
     headlineLarge = TextStyle(
+
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Bold
     ),
     headlineMedium = TextStyle(
+
         fontSize = 24.sp,
         lineHeight = 32.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Bold
     ),
     headlineSmall = TextStyle(
+
         fontSize = 20.sp,
         lineHeight = 28.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Bold
     ),
     titleLarge = TextStyle(
+
         fontSize = 16.sp,
         lineHeight = 22.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Bold
     ),
     titleMedium = TextStyle(
+
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Bold
     ),
     titleSmall = TextStyle(
+
         fontSize = 12.sp,
         lineHeight = 18.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Bold
     ),
     labelMedium = TextStyle(
+
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Normal
     ),
     bodyLarge = TextStyle(
+
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Normal
     ),
     bodyMedium = TextStyle(
+
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = (-0.6).sp,
         fontWeight = FontWeight.Normal
     ),
     bodySmall = TextStyle(
+
         fontSize = 12.sp,
         lineHeight = 18.sp,
         letterSpacing = (-0.6).sp,
