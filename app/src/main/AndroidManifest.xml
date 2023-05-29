@@ -29,6 +29,10 @@
         <activity
             android:name=".ui.post.GridActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.post.DetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -30,6 +30,7 @@ import dev.yjyoon.goorle.ui.component.GoorleSectionTileASmall
 import dev.yjyoon.goorle.ui.component.GoorleSectionTileB
 import dev.yjyoon.goorle.ui.component.GoorleTopBar
 import dev.yjyoon.goorle.ui.model.FilterType
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.model.RegionType
 import dev.yjyoon.goorle.ui.model.ThemeType
 
@@ -37,7 +38,8 @@ import dev.yjyoon.goorle.ui.model.ThemeType
 fun GridScreen(
     viewModel: GridViewModel,
     type: GridViewType,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    navigateToDetail: (Post) -> Unit
 ) {
 
     val uiState by viewModel.uiState.collectAsState()
@@ -88,7 +90,7 @@ fun GridScreen(
             ) {
                 items(it) { post ->
                     if (uiState.filters.isEmpty() || post.filters.containsAll(uiState.filters)) {
-                        GoorlePostItem(post = post)
+                        GoorlePostItem(post = post, onClick = { navigateToDetail(post) })
                     }
                 }
             }

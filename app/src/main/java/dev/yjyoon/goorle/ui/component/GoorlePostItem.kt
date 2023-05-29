@@ -1,5 +1,6 @@
 package dev.yjyoon.goorle.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,14 +23,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import dev.yjyoon.goorle.R
-import dev.yjyoon.goorle.ui.post.Post
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.theme.GoorleGray9E
 
 @Composable
 fun GoorlePostItem(
-    post: Post
+    post: Post,
+    onClick: () -> Unit
 ) {
-    Column {
+    Column(modifier = Modifier.clickable { onClick() }) {
         AsyncImage(
             model = post.images.first(),
             contentDescription = null,

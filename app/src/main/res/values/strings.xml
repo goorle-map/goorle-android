@@ -60,4 +60,8 @@
     <string name="tag_rural">촌캉스</string>
     <string name="tag_hotel">호캉스</string>
     <string name="tag_tour">관광명소</string>
+
+    <string name="comment">댓글 (%d)</string>
+    <string name="comment_placeholder">댓글 쓰기</string>
+    <string name="post">등록</string>
 </resources>

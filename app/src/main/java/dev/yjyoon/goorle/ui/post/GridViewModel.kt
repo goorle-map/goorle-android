@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.model.FilterType
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.model.RegionType
 import dev.yjyoon.goorle.ui.model.ThemeType
 import kotlinx.coroutines.flow.MutableStateFlow

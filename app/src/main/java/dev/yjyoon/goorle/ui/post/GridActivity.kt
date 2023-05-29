@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
 
 class GridActivity : ComponentActivity() {
@@ -23,11 +24,14 @@ class GridActivity : ComponentActivity() {
                 GridScreen(
                     viewModel = viewModel,
                     type = type,
-                    onBack = ::finish
+                    onBack = ::finish,
+                    navigateToDetail = ::startDetailActivity
                 )
             }
         }
     }
+
+    private fun startDetailActivity(post: Post) = DetailActivity.startActivity(this, post)
 
     companion object {
         val EXTRA_KEY_TYPE = "type"
