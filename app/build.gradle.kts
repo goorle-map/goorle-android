@@ -71,6 +71,8 @@ dependencies {
 
     implementation(libs.accompanist.webview)
     implementation(libs.accompanist.navigation)
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
 
     implementation(libs.squareup.okhttp)
     implementation(libs.squareup.okhttp.logging)
