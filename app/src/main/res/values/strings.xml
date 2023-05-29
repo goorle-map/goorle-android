@@ -18,13 +18,13 @@
     <string name="home_section_title_05">굴러가는 패키지 여행</string>
     <string name="home_section_subtitle_05">패키지 여행 설명</string>
 
-    <string name="home_section_item_01">속세를 떠나\n자연으로</string>
-    <string name="home_section_item_02">시간을 거스르는\n한옥 여행</string>
-    <string name="home_section_item_03">반려견과\n같이 갈래</string>
-    <string name="home_section_item_04">시골 할머니 댁으로,\n촌캉스</string>
-    <string name="home_section_item_05">시원한 바다,\n탁 트인 마음</string>
-    <string name="home_section_item_06">도심 한복판\n럭셔리 호캉</string>
-    <string name="home_section_item_07">구르고 굴러\n관광명소까지</string>
+    <string name="theme_nature">속세를 떠나\n자연으로</string>
+    <string name="theme_hanok">시간을 거스르는\n한옥 여행</string>
+    <string name="theme_dog">반려견과\n같이 갈래</string>
+    <string name="theme_rural">시골 할머니 댁으로,\n촌캉스</string>
+    <string name="theme_ocean">시원한 바다,\n탁 트인 마음</string>
+    <string name="theme_hotel">도심 한복판\n럭셔리 호캉스</string>
+    <string name="theme_tour">구르고 굴러\n관광명소까지</string>
 
     <string name="seoul">서울</string>
     <string name="busan">부산</string>
@@ -53,4 +53,11 @@
     <string name="shower">장애인 샤워실</string>
     <string name="accommodation">장애인 객실</string>
 
+    <string name="tag_nature">자연</string>
+    <string name="tag_ocean">바다</string>
+    <string name="tag_hanok">한옥</string>
+    <string name="tag_dog">애견동반</string>
+    <string name="tag_rural">촌캉스</string>
+    <string name="tag_hotel">호캉스</string>
+    <string name="tag_tour">관광명소</string>
 </resources>
