@@ -31,7 +31,7 @@ fun GoorlePostItem(
 ) {
     Column {
         AsyncImage(
-            model = post.thumbnail,
+            model = post.images.first(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
