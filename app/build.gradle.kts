@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.viewmodel.ktx)
     implementation(libs.androidx.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     implementation(libs.compose.ui.core)
     implementation(libs.compose.ui.tooling.preview)
@@ -80,7 +81,8 @@ dependencies {
     implementation(libs.squareup.retrofit.gson)
 
     implementation(libs.coil.compose)
-
+    implementation(libs.image.cropper)
+    
     implementation(libs.google.hilt.android)
     kapt(libs.google.hilt.compiler)
 
