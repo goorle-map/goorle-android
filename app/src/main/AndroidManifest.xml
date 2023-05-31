@@ -33,6 +33,10 @@
         <activity
             android:name=".ui.post.DetailActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.canhub.cropper.CropImageActivity"
+            android:theme="@style/Theme.ImageCropper" />
     </application>
 
 </manifest>
