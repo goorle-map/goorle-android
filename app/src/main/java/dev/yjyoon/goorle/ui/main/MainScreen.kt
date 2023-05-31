@@ -17,6 +17,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +29,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,64 +49,82 @@ import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.character.CharacterScreen
 import dev.yjyoon.goorle.ui.home.HomeScreen
 import dev.yjyoon.goorle.ui.mypage.MypageScreen
+import dev.yjyoon.goorle.ui.post.CreateScreen
 import dev.yjyoon.goorle.ui.post.GridViewType
 import dev.yjyoon.goorle.ui.theme.GoorleBlue
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalAnimationApi::class)
+@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
     navigateToGrid: (GridViewType) -> Unit
 ) {
+    val coroutineScope = rememberCoroutineScope()
+    val modalSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        skipHalfExpanded = true
+    )
     val navController = rememberAnimatedNavController()
     val navigation = rememberMainNavigation(navController)
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    ModalBottomSheetLayout(
+        sheetState = modalSheetState,
+        sheetShape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
+        sheetContent = {
+            CreateScreen(dismiss = { coroutineScope.launch { modalSheetState.hide() } })
+        }
+    ) {
+        Scaffold(
+            topBar = {
+                HomeTopBar(
+                    onClickSearchBar = {}
+                )
+            },
+            bottomBar = {
+                MainNavigationBar(
+                    currentDestination = currentDestination,
+                    onNavigate = { navigation.navigateTo(it) },
+                )
+            },
+            floatingActionButton = {
+                if (MainDestination.Home in currentDestination) {
+                    FloatingActionButton(
+                        onClick = {
+                            coroutineScope.launch {
+                                modalSheetState.show()
+                            }
+                        },
+                        containerColor = GoorleBlue,
+                        contentColor = Color.White,
+                        shape = CircleShape
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_add),
+                            contentDescription = null
+                        )
+                    }
+                }
 
-    Scaffold(
-        topBar = {
-            HomeTopBar(
-                onClickSearchBar = {}
-            )
-        },
-        bottomBar = {
-            MainNavigationBar(
-                currentDestination = currentDestination,
-                onNavigate = { navigation.navigateTo(it) },
-            )
-        },
-        floatingActionButton = {
-            if (MainDestination.Home in currentDestination) {
-                FloatingActionButton(
-                    onClick = { /*TODO*/ },
-                    containerColor = GoorleBlue,
-                    contentColor = Color.White,
-                    shape = CircleShape
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_add),
-                        contentDescription = null
+            }
+        ) { padding ->
+            AnimatedNavHost(
+                navController = navigation.navController,
+                startDestination = MainDestination.Home.route,
+                modifier = Modifier.padding(padding)
+            ) {
+                composable(route = MainDestination.Home.route) {
+                    HomeScreen(
+                        navigateToGrid = navigateToGrid
                     )
                 }
-            }
-
-        }
-    ) { padding ->
-        AnimatedNavHost(
-            navController = navigation.navController,
-            startDestination = MainDestination.Home.route,
-            modifier = Modifier.padding(padding)
-        ) {
-            composable(route = MainDestination.Home.route) {
-                HomeScreen(
-                    navigateToGrid = navigateToGrid
-                )
-            }
-            composable(route = MainDestination.Character.route) {
-                CharacterScreen()
-            }
-            composable(route = MainDestination.MyPage.route) {
-                MypageScreen()
+                composable(route = MainDestination.Character.route) {
+                    CharacterScreen()
+                }
+                composable(route = MainDestination.MyPage.route) {
+                    MypageScreen()
+                }
             }
         }
     }

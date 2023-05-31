@@ -64,4 +64,14 @@
     <string name="comment">댓글 (%d)</string>
     <string name="comment_placeholder">댓글 쓰기</string>
     <string name="post">등록</string>
+
+    <string name="new_post_title">새로운 장소 추가하기</string>
+    <string name="new_post_search">숙소 검색</string>
+    <string name="new_post_search_placeholder">숙소 이름을 검색해주세요</string>
+    <string name="new_post_image">사진 추가(%d/10)</string>
+    <string name="new_post_tag">숙소 태그 추가(최소 1개)</string>
+    <string name="new_post_filter">숙소 특징 선택(최소 1개)</string>
+    <string name="new_post_add">추가하기</string>
+
+    <string name="done">완료</string>
 </resources>
