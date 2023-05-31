@@ -62,7 +62,7 @@ fun DetailScreen(
     val pagerState = rememberPagerState()
     val scrollState = rememberScrollState()
     var comment by remember { mutableStateOf("") }
-    
+
     BackHandler {
         onBack()
     }
@@ -175,7 +175,7 @@ fun DetailScreen(
                         painter = painterResource(id = it.iconRes),
                         contentDescription = null,
                         tint = if (it in post.filters) GoorleBlue else GoorleGray75,
-                        modifier = Modifier.size(48.dp)
+                        modifier = Modifier.size(36.dp)
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
@@ -203,7 +203,7 @@ fun DetailScreen(
                         painter = painterResource(id = it.iconRes),
                         contentDescription = null,
                         tint = if (it in post.filters) GoorleBlue else GoorleGray75,
-                        modifier = Modifier.size(48.dp)
+                        modifier = Modifier.size(36.dp)
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
