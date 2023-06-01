@@ -2,7 +2,6 @@ package dev.yjyoon.goorle.ui.main
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,7 +22,6 @@ import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -77,11 +74,7 @@ fun MainScreen(
         }
     ) {
         Scaffold(
-            topBar = {
-                HomeTopBar(
-                    onClickSearchBar = {}
-                )
-            },
+
             bottomBar = {
                 MainNavigationBar(
                     currentDestination = currentDestination,
@@ -130,61 +123,6 @@ fun MainScreen(
     }
 }
 
-@Composable
-private fun HomeTopBar(
-    onClickSearchBar: () -> Unit
-) {
-    Surface(
-        modifier = Modifier
-            .height(HomeTopBarHeightExtended)
-            .fillMaxWidth(),
-        color = GoorleBlue,
-        shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-            Spacer(modifier = Modifier.weight(1f))
-            Image(
-                painter = painterResource(id = R.drawable.img_logo_white),
-                contentDescription = null,
-                modifier = Modifier.width(100.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp)
-                    .clickable { onClickSearchBar() },
-                color = Color.White,
-                shape = RoundedCornerShape(24.dp)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(vertical = 12.dp, horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_search),
-                        contentDescription = null,
-                        tint = GoorleBlue,
-                        modifier = Modifier.size(24.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = stringResource(id = R.string.home_search_bar_placeholder),
-                        style = MaterialTheme.typography.titleLarge,
-                        color = Color(0xFF9E9E9E)
-                    )
-                }
-            }
-        }
-
-    }
-}
 
 @Composable
 private fun MainNavigationBar(
@@ -269,4 +207,3 @@ private fun NavigationBarItem(
 }
 
 private val NavigationBarHeight: Dp = 58.dp
-private val HomeTopBarHeightExtended: Dp = 164.dp
