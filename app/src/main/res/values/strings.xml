@@ -74,4 +74,7 @@
     <string name="new_post_add">추가하기</string>
 
     <string name="done">완료</string>
+
+    <string name="tab_place">내가 모은 장소 (%d)</string>
+    <string name="tab_comment">내가 단 댓글 (%d)</string>
 </resources>
