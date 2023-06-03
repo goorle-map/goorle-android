@@ -55,7 +55,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
-    navigateToGrid: (GridViewType) -> Unit
+    navigateToGrid: (GridViewType) -> Unit,
+    navigateToTrip: () -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
@@ -74,7 +75,6 @@ fun MainScreen(
         }
     ) {
         Scaffold(
-
             bottomBar = {
                 MainNavigationBar(
                     currentDestination = currentDestination,
@@ -109,7 +109,8 @@ fun MainScreen(
             ) {
                 composable(route = MainDestination.Home.route) {
                     HomeScreen(
-                        navigateToGrid = navigateToGrid
+                        navigateToGrid = navigateToGrid,
+                        navigateToTrip = navigateToTrip
                     )
                 }
                 composable(route = MainDestination.Character.route) {

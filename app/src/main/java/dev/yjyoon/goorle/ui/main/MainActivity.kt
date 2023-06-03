@@ -8,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.yjyoon.goorle.ui.post.GridActivity
 import dev.yjyoon.goorle.ui.post.GridViewType
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
+import dev.yjyoon.goorle.ui.trip.TripActivity
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -19,12 +20,13 @@ class MainActivity : ComponentActivity() {
             GoorleTheme {
                 MainScreen(
                     viewModel = viewModel,
-                    navigateToGrid = ::startGridActivity
+                    navigateToGrid = ::startGridActivity,
+                    navigateToTrip = ::startTripActivity
                 )
             }
         }
     }
 
     private fun startGridActivity(type: GridViewType) = GridActivity.startActivity(this, type)
-
+    private fun startTripActivity() = TripActivity.startActivity(this)
 }

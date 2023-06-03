@@ -1,6 +1,7 @@
 package dev.yjyoon.goorle.ui.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -46,7 +47,8 @@ import dev.yjyoon.goorle.ui.theme.GoorleBlue
 
 @Composable
 fun HomeScreen(
-    navigateToGrid: (GridViewType) -> Unit
+    navigateToGrid: (GridViewType) -> Unit,
+    navigateToTrip: () -> Unit
 ) {
     val scrollState = rememberScrollState()
 
@@ -161,11 +163,13 @@ fun HomeScreen(
                     color = Color(0xFF9CFF7A)
                 ) {
                     GoorleSection(
-                        modifier = Modifier.padding(vertical = 8.dp),
+                        modifier = Modifier
+                            .padding(vertical = 8.dp)
+                            .clickable { navigateToTrip() },
                         titleRes = R.string.home_section_title_05,
                         subtitleRes = R.string.home_section_subtitle_05,
                         textColor = GoorleBlack,
-                        onTap = { /*TODO*/ }
+                        onTap = { }
                     ) {}
                 }
                 Spacer(modifier = Modifier.height(12.dp))
