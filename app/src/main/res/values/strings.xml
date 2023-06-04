@@ -84,4 +84,6 @@
     <string name="social_text">지금 구르리와 함께 떠나보세요.\n\n구르리가 기다리고 있어요!</string>
 
     <string name="social_login_text">소셜로그인으로 간편하게 시작하기</string>
+
+    <string name="seoul_goorle_map">서울로 구를지도</string>
 </resources>

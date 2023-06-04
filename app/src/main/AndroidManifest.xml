@@ -49,6 +49,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.map.MapActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name="com.canhub.cropper.CropImageActivity"
             android:theme="@style/Theme.ImageCropper" />
     </application>

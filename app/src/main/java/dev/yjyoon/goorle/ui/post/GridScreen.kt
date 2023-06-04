@@ -39,7 +39,8 @@ fun GridScreen(
     viewModel: GridViewModel,
     type: GridViewType,
     onBack: () -> Unit,
-    navigateToDetail: (Post) -> Unit
+    navigateToDetail: (Post) -> Unit,
+    navigateToMap: () -> Unit
 ) {
 
     val uiState by viewModel.uiState.collectAsState()
@@ -118,9 +119,7 @@ fun GridScreen(
                         GoorleSectionTileB(
                             imageRes = it.imageRes,
                             textRes = it.stringRes,
-                            onClick = {
-                                viewModel.loadRegionList(it)
-                            }
+                            onClick = { navigateToMap() }
                         )
                     }
                 }
