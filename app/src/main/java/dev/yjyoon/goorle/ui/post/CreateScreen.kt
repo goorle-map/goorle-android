@@ -1,5 +1,6 @@
 package dev.yjyoon.goorle.ui.post
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -61,6 +62,8 @@ fun CreateScreen(
     val scrollState = rememberScrollState()
     val keyword by remember { mutableStateOf("") }
 
+    BackHandler { dismiss() }
+    
     Column(
         modifier = Modifier
             .verticalScroll(scrollState)
