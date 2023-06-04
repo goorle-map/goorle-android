@@ -80,4 +80,8 @@
 
     <string name="package_trip">굴러가는 패키지 여행</string>
     <string name="package_trip_content">\'구를지도\'는 해당 여행사와 무관하며\n큐레이션 정보만을 제공합니다.</string>
+
+    <string name="social_text">지금 구르리와 함께 떠나보세요.\n\n구르리가 기다리고 있어요!</string>
+
+    <string name="social_login_text">소셜로그인으로 간편하게 시작하기</string>
 </resources>
