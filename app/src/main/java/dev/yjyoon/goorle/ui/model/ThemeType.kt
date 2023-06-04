@@ -24,11 +24,6 @@ enum class ThemeType(
         imageRes = R.drawable.img_home_sec_03,
         tagRes = R.string.tag_dog
     ),
-    Rural(
-        stringRes = R.string.theme_rural,
-        imageRes = R.drawable.img_home_sec_04,
-        tagRes = R.string.tag_rural
-    ),
     Ocean(
         stringRes = R.string.theme_ocean,
         imageRes = R.drawable.img_home_sec_05,
