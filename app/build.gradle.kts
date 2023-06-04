@@ -81,8 +81,9 @@ dependencies {
     implementation(libs.squareup.retrofit.gson)
 
     implementation(libs.coil.compose)
+    implementation(libs.naver.map.compose)
     implementation(libs.image.cropper)
-    
+
     implementation(libs.google.hilt.android)
     kapt(libs.google.hilt.compiler)
 
