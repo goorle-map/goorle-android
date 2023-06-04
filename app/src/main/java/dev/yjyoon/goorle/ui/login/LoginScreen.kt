@@ -1,6 +1,7 @@
 package dev.yjyoon.goorle.ui.login
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,13 +21,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.yjyoon.goorle.R
+import dev.yjyoon.goorle.ui.theme.GoorleWhite
 
 @Composable
 fun LoginScreen(
     navigateToMain: () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = GoorleWhite),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
