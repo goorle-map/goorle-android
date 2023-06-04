@@ -1,6 +1,7 @@
 package dev.yjyoon.goorle.ui.login
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,7 +22,9 @@ import androidx.compose.ui.unit.sp
 import dev.yjyoon.goorle.R
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navigateToMain: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceEvenly,
@@ -56,12 +59,16 @@ fun LoginScreen() {
             Image(
                 painter = painterResource(id = R.drawable.img_login_kakao),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { navigateToMain() }
             )
             Image(
                 painter = painterResource(id = R.drawable.img_login_naver),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { navigateToMain() }
             )
         }
     }

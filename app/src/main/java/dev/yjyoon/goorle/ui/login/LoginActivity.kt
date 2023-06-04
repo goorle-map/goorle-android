@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import dagger.hilt.android.AndroidEntryPoint
+import dev.yjyoon.goorle.ui.main.MainActivity
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
 
 @AndroidEntryPoint
@@ -16,10 +17,12 @@ class LoginActivity : ComponentActivity() {
 
         setContent {
             GoorleTheme {
-                LoginScreen()
+                LoginScreen(navigateToMain = ::startMainActivity)
             }
         }
     }
+
+    private fun startMainActivity() = MainActivity.startActivity(this)
 
     companion object {
         fun startActivity(context: Context) {
