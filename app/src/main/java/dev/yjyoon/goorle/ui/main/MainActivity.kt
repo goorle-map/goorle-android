@@ -1,5 +1,8 @@
 package dev.yjyoon.goorle.ui.main
 
+import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,4 +32,11 @@ class MainActivity : ComponentActivity() {
 
     private fun startGridActivity(type: GridViewType) = GridActivity.startActivity(this, type)
     private fun startTripActivity() = TripActivity.startActivity(this)
+
+    companion object {
+        fun startActivity(context: Context) {
+            val intent = Intent(context, MainActivity::class.java).addFlags(FLAG_ACTIVITY_CLEAR_TOP)
+            context.startActivity(intent)
+        }
+    }
 }
