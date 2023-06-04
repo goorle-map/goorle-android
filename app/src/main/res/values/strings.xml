@@ -86,4 +86,30 @@
     <string name="social_login_text">소셜로그인으로 간편하게 시작하기</string>
 
     <string name="seoul_goorle_map">서울로 구를지도</string>
+
+    <string name="gangseo">강서구</string>
+    <string name="yangcheon">양천구</string>
+    <string name="guro">구로구</string>
+    <string name="youngdeungpo">영등포구</string>
+    <string name="geumcheon">금천구</string>
+    <string name="gwanak">관악구</string>
+    <string name="dongjak">동작구</string>
+    <string name="mapo">마포구</string>
+    <string name="seodaemoon">서대문구</string>
+    <string name="eunpyeong">은평구</string>
+    <string name="jongro">종로구</string>
+    <string name="yongsan">용산구</string>
+    <string name="junggu">중구</string>
+    <string name="gangbuk">강북구</string>
+    <string name="seongbuk">성북구</string>
+    <string name="dobong">도봉구</string>
+    <string name="nowon">노원구</string>
+    <string name="jungrang">중랑구</string>
+    <string name="dongdaemoon">동대문구</string>
+    <string name="seongdong">성동구</string>
+    <string name="gwangjin">광진구</string>
+    <string name="gangdong">강동구</string>
+    <string name="songpa">송파구</string>
+    <string name="gangnam">강남구</string>
+    <string name="seocho">서초구</string>
 </resources>
