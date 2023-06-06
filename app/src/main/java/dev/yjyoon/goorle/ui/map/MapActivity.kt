@@ -5,18 +5,22 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
 
 @AndroidEntryPoint
 class MapActivity : ComponentActivity() {
 
+    private val viewModel: MapViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             GoorleTheme {
                 MapScreen(
-                    onClose = ::finish
+                    onClose = ::finish,
+                    viewModel = viewModel
                 )
             }
         }

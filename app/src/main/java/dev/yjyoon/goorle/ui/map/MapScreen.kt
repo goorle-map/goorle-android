@@ -15,6 +15,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +31,7 @@ import com.naver.maps.map.compose.ExperimentalNaverMapApi
 import com.naver.maps.map.compose.NaverMap
 import com.naver.maps.map.compose.rememberCameraPositionState
 import dev.yjyoon.goorle.R
+import dev.yjyoon.goorle.ui.component.GoorleMapTile
 import dev.yjyoon.goorle.ui.component.GoorleTopBar
 import dev.yjyoon.goorle.ui.model.Seoul
 import dev.yjyoon.goorle.ui.theme.GoorleGray75
@@ -38,8 +41,11 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalNaverMapApi::class)
 @Composable
 fun MapScreen(
+    viewModel: MapViewModel,
     onClose: () -> Unit
 ) {
+    val uiState by viewModel.uiState.collectAsState()
+
     val coroutineScope = rememberCoroutineScope()
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition(Seoul.Jongro.latlng, ZOOM_LEVEL)
@@ -99,6 +105,15 @@ fun MapScreen(
                         )
                     }
                 }
+            }
+            uiState.selectedPost?.let {
+                GoorleMapTile(
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp, vertical = 40.dp)
+                        .align(Alignment.BottomCenter),
+                    post = it,
+                    onClick = {}
+                )
             }
         }
     }
