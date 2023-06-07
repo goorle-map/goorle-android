@@ -9,14 +9,14 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("accommodations")
-    fun getAllPosts(): List<PostResponse>
+    suspend fun getAllPosts(): List<PostResponse>
 
     @GET("accommodations")
-    fun getPost(@Path("accommodationId") id: Int): PostResponse
+    suspend fun getPost(@Path("accommodationId") id: Int): PostResponse
 
     @GET("comments/recent")
-    fun getRecentComments(): List<CommentResponse>
+    suspend fun getRecentComments(): List<CommentResponse>
 
     @GET("packages")
-    fun getAllPackages(): List<PackageResponse>
+    suspend fun getAllPackages(): List<PackageResponse>
 }
