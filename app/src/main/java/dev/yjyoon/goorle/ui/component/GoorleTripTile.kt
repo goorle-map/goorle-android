@@ -16,7 +16,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import dev.yjyoon.goorle.ui.model.Trip
@@ -41,7 +40,6 @@ fun GoorleTripTile(
             AsyncImage(
                 model = trip.imageUrl,
                 contentDescription = null,
-                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(86.dp)
                     .aspectRatio(5 / 4f)
