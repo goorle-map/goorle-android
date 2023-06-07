@@ -1,6 +1,7 @@
 package dev.yjyoon.goorle.data.source
 
 import dev.yjyoon.goorle.data.model.CommentResponse
+import dev.yjyoon.goorle.data.model.PackageResponse
 import dev.yjyoon.goorle.data.model.PostResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,5 +17,6 @@ interface ApiService {
     @GET("comments/recent")
     fun getRecentComments(): List<CommentResponse>
 
-    
+    @GET("packages")
+    fun getAllPackages(): List<PackageResponse>
 }
