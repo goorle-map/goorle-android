@@ -4,5 +4,5 @@ import dev.yjyoon.goorle.ui.model.Trip
 
 data class TripState(
     val selectedTrip: Trip? = null,
-    val trips: List<Trip> = List(6) { Trip() }
+    val trips: List<Trip> = emptyList()
 )
