@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,15 +33,25 @@ fun GoorlePostItem(
     onClick: () -> Unit
 ) {
     Column(modifier = Modifier.clickable { onClick() }) {
-        AsyncImage(
-            model = post.images.first(),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(4 / 3f)
-                .clip(RoundedCornerShape(24.dp))
-        )
+        if (post.images.isEmpty()) {
+            Surface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(4 / 3f),
+                shape = RoundedCornerShape(24.dp),
+                color = GoorleGray9E
+            ) {}
+        } else {
+            AsyncImage(
+                model = post.images.first(),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(4 / 3f)
+                    .clip(RoundedCornerShape(24.dp))
+            )
+        }
         Spacer(modifier = Modifier.height(4.dp))
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(text = post.title, style = MaterialTheme.typography.titleMedium)

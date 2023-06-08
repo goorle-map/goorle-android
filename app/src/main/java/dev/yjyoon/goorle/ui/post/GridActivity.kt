@@ -6,10 +6,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import dev.yjyoon.goorle.ui.map.MapActivity
 import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
 
+@AndroidEntryPoint
 class GridActivity : ComponentActivity() {
 
     private val viewModel: GridViewModel by viewModels()

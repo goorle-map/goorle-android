@@ -79,7 +79,7 @@ fun GoorleCommentTile(
                     }
                 }
                 Text(
-                    text = comment.date,
+                    text = comment.date.take(10),
                     style = MaterialTheme.typography.titleSmall,
                     color = GoorleGray75
                 )

@@ -39,7 +39,7 @@ fun GoorleComment(
                 Text(text = comment.nickname, style = MaterialTheme.typography.titleSmall)
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = comment.date,
+                    text = comment.date.take(10),
                     style = MaterialTheme.typography.labelMedium,
                     color = GoorleGray9E
                 )

@@ -24,10 +24,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.CameraAnimation
 import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.compose.ExperimentalNaverMapApi
+import com.naver.maps.map.compose.Marker
+import com.naver.maps.map.compose.MarkerState
 import com.naver.maps.map.compose.NaverMap
 import com.naver.maps.map.compose.rememberCameraPositionState
 import dev.yjyoon.goorle.R
@@ -69,7 +72,18 @@ fun MapScreen(
                     .fillMaxSize()
                     .align(Alignment.Center),
                 cameraPositionState = cameraPositionState
-            )
+            ) {
+                uiState.posts.forEach { post ->
+                    Marker(
+                        state = MarkerState(position = LatLng(post.lat, post.lng)),
+                        captionText = post.title,
+                        onClick = {
+                            viewModel.selectPost(post)
+                            true
+                        }
+                    )
+                }
+            }
             LazyColumn(
                 modifier = Modifier.align(Alignment.CenterStart),
                 contentPadding = PaddingValues(16.dp),

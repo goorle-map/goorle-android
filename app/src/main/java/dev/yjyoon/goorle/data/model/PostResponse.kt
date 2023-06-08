@@ -14,7 +14,7 @@ data class PostResponse(
     val images: List<String>,
     val tags: List<String>,
     val features: List<String>,
-    val comments: List<CommentResponse>
+    val comments: List<CommentResponse>?
 )
 
 fun PostResponse.toModel() = Post(
@@ -24,7 +24,7 @@ fun PostResponse.toModel() = Post(
     location = location,
     filters = features.map { it.toFilterType() },
     tags = tags.map { it.toThemeType() },
-    comments = comments.map { it.toModel() },
+    comments = comments?.map { it.toModel() } ?: emptyList(),
     lng = position.lng,
     lat = position.lat
 )

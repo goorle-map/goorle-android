@@ -2,21 +2,24 @@ package dev.yjyoon.goorle.ui.post
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.yjyoon.goorle.R
+import dev.yjyoon.goorle.data.repository.ServiceRepository
 import dev.yjyoon.goorle.ui.model.FilterType
-import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.model.RegionType
 import dev.yjyoon.goorle.ui.model.ThemeType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class GridViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    private val serviceRepository: ServiceRepository
 ) : ViewModel() {
 
     private val type =
@@ -42,10 +45,22 @@ class GridViewModel @Inject constructor(
     }
 
     fun loadThemeList(themeType: ThemeType) {
-        _uiState.update { it.copy(titleRes = themeType.stringRes, posts = List(10) { Post() }) }
+        viewModelScope.launch {
+            val posts = serviceRepository.getAllPosts().getOrThrow()
+            _uiState.update { it.copy(titleRes = themeType.stringRes, posts = posts) }
+        }
     }
 
     fun loadRegionList(regionType: RegionType) {
-        _uiState.update { it.copy(titleRes = regionType.stringRes, posts = List(10) { Post() }) }
+        viewModelScope.launch {
+            serviceRepository.getAllPosts().onSuccess { posts ->
+                _uiState.update {
+                    it.copy(
+                        titleRes = regionType.stringRes,
+                        posts = posts
+                    )
+                }
+            }
+        }
     }
 }
