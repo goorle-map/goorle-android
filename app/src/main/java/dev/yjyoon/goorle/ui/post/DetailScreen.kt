@@ -19,6 +19,8 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
@@ -30,22 +32,29 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.component.GoorleComment
+import dev.yjyoon.goorle.ui.model.Comment
 import dev.yjyoon.goorle.ui.model.FilterType
 import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.theme.GoorleBlue
@@ -53,7 +62,10 @@ import dev.yjyoon.goorle.ui.theme.GoorleGray75
 import dev.yjyoon.goorle.ui.theme.GoorleGray9E
 import dev.yjyoon.goorle.ui.theme.GoorleGrayD9
 import dev.yjyoon.goorle.ui.theme.GoorleGrayE0
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun DetailScreen(
     post: Post,
@@ -61,7 +73,11 @@ fun DetailScreen(
 ) {
     val pagerState = rememberPagerState()
     val scrollState = rememberScrollState()
+
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusRequester = remember { FocusRequester() }
     var comment by remember { mutableStateOf("") }
+    val commentList = remember { mutableStateListOf<Comment>() }
 
     BackHandler {
         onBack()
@@ -234,10 +250,26 @@ fun DetailScreen(
                 BasicTextField(
                     modifier = Modifier
                         .weight(1f)
-                        .height(36.dp),
+                        .height(36.dp)
+                        .focusRequester(focusRequester),
                     value = comment,
                     textStyle = MaterialTheme.typography.bodyMedium,
-                    onValueChange = {},
+                    onValueChange = { comment = it },
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send),
+                    keyboardActions = KeyboardActions(
+                        onSend = {
+                            commentList.add(
+                                Comment(
+                                    nickname = "구르리",
+                                    date = LocalDateTime.now()
+                                        .format(DateTimeFormatter.ofPattern("yy.MM.dd")),
+                                    content = comment
+                                )
+                            )
+                            comment = ""
+                            keyboardController?.hide()
+                        }
+                    ),
                     singleLine = true,
                     decorationBox = { innerTextField ->
                         Surface(
@@ -269,7 +301,19 @@ fun DetailScreen(
                     }
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                TextButton(onClick = { /*TODO*/ }) {
+                TextButton(
+                    onClick = {
+                        commentList.add(
+                            Comment(
+                                nickname = "구르리",
+                                date = LocalDateTime.now()
+                                    .format(DateTimeFormatter.ofPattern("yy.MM.dd")),
+                                content = comment
+                            )
+                        )
+                        comment = ""
+                        keyboardController?.hide()
+                    }) {
                     Text(
                         text = stringResource(id = R.string.post),
                         style = MaterialTheme.typography.titleSmall,
@@ -278,6 +322,12 @@ fun DetailScreen(
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
+            commentList.forEach {
+                GoorleComment(
+                    modifier = Modifier.padding(bottom = 24.dp),
+                    comment = it
+                )
+            }
             post.comments.forEach {
                 GoorleComment(
                     modifier = Modifier.padding(bottom = 24.dp),
