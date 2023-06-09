@@ -10,6 +10,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         NaverMapSdk.getInstance(this).client =
-            NaverMapSdk.NaverCloudPlatformClient(Env.NAVER_MAPS_CLIEND_ID)
+            NaverMapSdk.NaverCloudPlatformClient(Env.NAVER_MAPS_CLIENT_ID)
     }
 }
