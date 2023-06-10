@@ -41,6 +41,7 @@ import dev.yjyoon.goorle.ui.component.GoorleSectionTileA
 import dev.yjyoon.goorle.ui.component.GoorleSectionTileB
 import dev.yjyoon.goorle.ui.component.GoorleSectionTileC
 import dev.yjyoon.goorle.ui.component.GoorleSectionTileD
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.model.RegionType
 import dev.yjyoon.goorle.ui.model.ThemeType
 import dev.yjyoon.goorle.ui.post.GridViewType
@@ -51,7 +52,8 @@ import dev.yjyoon.goorle.ui.theme.GoorleBlue
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     navigateToGrid: (GridViewType) -> Unit,
-    navigateToTrip: () -> Unit
+    navigateToTrip: () -> Unit,
+    navigateToDetail: (Post) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -108,8 +110,7 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.height(18.dp))
                 GoorleSection(
                     titleRes = R.string.home_section_title_03,
-                    subtitleRes = R.string.home_section_subtitle_03,
-                    onTap = { }
+                    subtitleRes = R.string.home_section_subtitle_03
                 ) {
                     Spacer(modifier = Modifier.width(8.dp))
                     GoorleSectionTileC(
@@ -147,8 +148,7 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.height(18.dp))
                 GoorleSection(
                     titleRes = R.string.home_section_title_04,
-                    subtitleRes = R.string.home_section_subtitle_04,
-                    onTap = { /*TODO*/ }
+                    subtitleRes = R.string.home_section_subtitle_04
                 ) {
                     Spacer(modifier = Modifier.width(8.dp))
                     uiState.recentComments.forEach {
@@ -156,7 +156,16 @@ fun HomeScreen(
                             imageUrl = it.image,
                             text = it.content,
                             subText = it.nickname,
-                            onClick = {},
+                            onClick = {
+                                navigateToDetail(
+                                    Post(
+                                        images = listOf(it.image),
+                                        title = it.title,
+                                        location = it.location,
+                                        comments = listOf(it)
+                                    )
+                                )
+                            },
                         )
                     }
                     Spacer(modifier = Modifier.width(8.dp))

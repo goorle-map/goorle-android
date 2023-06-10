@@ -8,6 +8,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import dev.yjyoon.goorle.ui.model.Post
+import dev.yjyoon.goorle.ui.post.DetailActivity
 import dev.yjyoon.goorle.ui.post.GridActivity
 import dev.yjyoon.goorle.ui.post.GridViewType
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
@@ -24,7 +26,8 @@ class MainActivity : ComponentActivity() {
                 MainScreen(
                     viewModel = viewModel,
                     navigateToGrid = ::startGridActivity,
-                    navigateToTrip = ::startTripActivity
+                    navigateToTrip = ::startTripActivity,
+                    navigateToDetail = ::startDetailActivity
                 )
             }
         }
@@ -32,6 +35,8 @@ class MainActivity : ComponentActivity() {
 
     private fun startGridActivity(type: GridViewType) = GridActivity.startActivity(this, type)
     private fun startTripActivity() = TripActivity.startActivity(this)
+    private fun startDetailActivity(post: Post) =
+        DetailActivity.startActivity(this, post)
 
     companion object {
         fun startActivity(context: Context) {

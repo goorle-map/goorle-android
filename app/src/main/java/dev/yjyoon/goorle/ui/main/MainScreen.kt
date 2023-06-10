@@ -45,6 +45,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.character.CharacterScreen
 import dev.yjyoon.goorle.ui.home.HomeScreen
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.mypage.MypageScreen
 import dev.yjyoon.goorle.ui.post.CreateScreen
 import dev.yjyoon.goorle.ui.post.GridViewType
@@ -56,7 +57,8 @@ import kotlinx.coroutines.launch
 fun MainScreen(
     viewModel: MainViewModel,
     navigateToGrid: (GridViewType) -> Unit,
-    navigateToTrip: () -> Unit
+    navigateToTrip: () -> Unit,
+    navigateToDetail: (Post) -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
     val modalSheetState = rememberModalBottomSheetState(
@@ -110,7 +112,8 @@ fun MainScreen(
                 composable(route = MainDestination.Home.route) {
                     HomeScreen(
                         navigateToGrid = navigateToGrid,
-                        navigateToTrip = navigateToTrip
+                        navigateToTrip = navigateToTrip,
+                        navigateToDetail = navigateToDetail
                     )
                 }
                 composable(route = MainDestination.Character.route) {

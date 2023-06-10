@@ -7,6 +7,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import dev.yjyoon.goorle.ui.model.Post
+import dev.yjyoon.goorle.ui.post.DetailActivity
 import dev.yjyoon.goorle.ui.theme.GoorleTheme
 
 @AndroidEntryPoint
@@ -20,11 +22,15 @@ class MapActivity : ComponentActivity() {
             GoorleTheme {
                 MapScreen(
                     onClose = ::finish,
-                    viewModel = viewModel
+                    viewModel = viewModel,
+                    navigateToDetail = ::startDetailActivity
                 )
             }
         }
     }
+
+    private fun startDetailActivity(post: Post) =
+        DetailActivity.startActivity(this, post)
 
     companion object {
         fun startActivity(context: Context) {

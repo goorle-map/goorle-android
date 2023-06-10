@@ -36,6 +36,7 @@ import com.naver.maps.map.compose.rememberCameraPositionState
 import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.component.GoorleMapTile
 import dev.yjyoon.goorle.ui.component.GoorleTopBar
+import dev.yjyoon.goorle.ui.model.Post
 import dev.yjyoon.goorle.ui.model.Seoul
 import dev.yjyoon.goorle.ui.theme.GoorleGray75
 import dev.yjyoon.goorle.ui.theme.GoorleGrayBD
@@ -45,7 +46,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun MapScreen(
     viewModel: MapViewModel,
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    navigateToDetail: (Post) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -126,7 +128,7 @@ fun MapScreen(
                         .padding(horizontal = 16.dp, vertical = 40.dp)
                         .align(Alignment.BottomCenter),
                     post = it,
-                    onClick = {}
+                    onClick = { navigateToDetail(it) }
                 )
             }
         }
