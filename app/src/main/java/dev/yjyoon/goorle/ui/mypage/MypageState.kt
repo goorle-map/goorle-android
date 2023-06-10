@@ -4,7 +4,7 @@ import dev.yjyoon.goorle.ui.model.Comment
 import dev.yjyoon.goorle.ui.model.Post
 
 data class MypageState(
-    val nickname: String = "여섯자닉네임",
-    val posts: List<Post> = List(20) { Post() },
-    val comments: List<Comment> = List(5) { Comment() }
+    val nickname: String = "떠돌이휴가중",
+    val posts: List<Post> = emptyList(),
+    val comments: List<Comment> = emptyList()
 )

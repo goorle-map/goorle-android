@@ -27,7 +27,8 @@ import dev.yjyoon.goorle.R
 @Composable
 fun GoorleSectionTileC(
     color: Color,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    pickCount: Int
 ) {
     Box(
         modifier = Modifier.clickable { onClick() }
@@ -59,7 +60,7 @@ fun GoorleSectionTileC(
                     color = Color.Black
                 )
                 Text(
-                    text = "20pick",
+                    text = "${pickCount}pick",
                     style = MaterialTheme.typography.labelMedium,
                     textAlign = TextAlign.Center,
                     color = Color.Black

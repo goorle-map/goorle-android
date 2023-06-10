@@ -11,7 +11,6 @@ data class CreateState(
     val tags: List<ThemeType> = emptyList(),
     val filters: List<FilterType> = emptyList(),
     val isValid: Boolean = title.isNotBlank()
-            && location.isNotBlank()
             && images.isNotEmpty()
             && tags.isNotEmpty()
             && filters.isNotEmpty()

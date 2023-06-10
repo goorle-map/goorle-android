@@ -240,7 +240,7 @@ fun DetailScreen(
         ) { }
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = stringResource(id = R.string.comment, 4),
+                text = stringResource(id = R.string.comment, post.comments.size),
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.height(12.dp))

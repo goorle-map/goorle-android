@@ -22,6 +22,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,6 +34,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.component.GoorleSection
 import dev.yjyoon.goorle.ui.component.GoorleSectionTileA
@@ -47,9 +49,12 @@ import dev.yjyoon.goorle.ui.theme.GoorleBlue
 
 @Composable
 fun HomeScreen(
+    viewModel: HomeViewModel = hiltViewModel(),
     navigateToGrid: (GridViewType) -> Unit,
     navigateToTrip: () -> Unit
 ) {
+    val uiState by viewModel.uiState.collectAsState()
+
     val scrollState = rememberScrollState()
 
     Scaffold(
@@ -109,27 +114,33 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.width(8.dp))
                     GoorleSectionTileC(
                         color = Color(0xFFADDEFF),
-                        onClick = {}
+                        onClick = {},
+                        pickCount = 20
                     )
                     GoorleSectionTileC(
                         color = Color(0xFFC2FFAD),
-                        onClick = {}
+                        onClick = {},
+                        pickCount = 17
                     )
                     GoorleSectionTileC(
                         color = Color(0xFFC9ADFF),
-                        onClick = {}
+                        onClick = {},
+                        pickCount = 16
                     )
                     GoorleSectionTileC(
                         color = Color(0xFFFFCEAD),
-                        onClick = {}
+                        onClick = {},
+                        pickCount = 14
                     )
                     GoorleSectionTileC(
                         color = Color(0xFFADDEFF),
-                        onClick = {}
+                        onClick = {},
+                        pickCount = 11
                     )
                     GoorleSectionTileC(
                         color = Color(0xFFC2FFAD),
-                        onClick = {}
+                        onClick = {},
+                        pickCount = 5
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                 }
@@ -140,18 +151,14 @@ fun HomeScreen(
                     onTap = { /*TODO*/ }
                 ) {
                     Spacer(modifier = Modifier.width(8.dp))
-                    GoorleSectionTileD(
-                        imageRes = R.drawable.img_comment_tile,
-                        onClick = {}
-                    )
-                    GoorleSectionTileD(
-                        imageRes = R.drawable.img_comment_tile,
-                        onClick = {}
-                    )
-                    GoorleSectionTileD(
-                        imageRes = R.drawable.img_comment_tile,
-                        onClick = {}
-                    )
+                    uiState.recentComments.forEach {
+                        GoorleSectionTileD(
+                            imageUrl = it.image,
+                            text = it.content,
+                            subText = it.nickname,
+                            onClick = {},
+                        )
+                    }
                     Spacer(modifier = Modifier.width(8.dp))
                 }
                 Spacer(modifier = Modifier.height(12.dp))

@@ -108,9 +108,7 @@ fun GridScreen(
                         GoorleSectionTileASmall(
                             imageRes = it.imageRes,
                             textRes = it.stringRes,
-                            onClick = {
-                                viewModel.loadThemeList(it)
-                            }
+                            onClick = { viewModel.loadThemeList(it) }
                         )
                     }
                 }

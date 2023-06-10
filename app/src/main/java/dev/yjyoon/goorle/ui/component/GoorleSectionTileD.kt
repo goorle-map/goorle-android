@@ -1,7 +1,5 @@
 package dev.yjyoon.goorle.ui.component
 
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,20 +18,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 
 @Composable
 fun GoorleSectionTileD(
-    @DrawableRes imageRes: Int,
+    imageUrl: String,
+    text: String,
+    subText: String,
     onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier.clickable { onClick() }
     ) {
-        Image(
-            painter = painterResource(id = imageRes),
+        AsyncImage(
+            model = imageUrl,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -55,14 +56,16 @@ fun GoorleSectionTileD(
                 .padding(24.dp)
         ) {
             Text(
-                text = "댓글이 이렇게 달리면 보이는거지 않을까",
+                text = text,
                 style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center,
-                color = Color.White
+                color = Color.White,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = "구르리",
+                text = subText,
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center,
                 color = Color.White

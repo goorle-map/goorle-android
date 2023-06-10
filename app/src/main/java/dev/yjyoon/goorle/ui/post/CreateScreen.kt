@@ -32,8 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -51,6 +50,8 @@ import dev.yjyoon.goorle.ui.model.ThemeType
 import dev.yjyoon.goorle.ui.theme.GoorleBlue
 import dev.yjyoon.goorle.ui.theme.GoorleGray75
 import dev.yjyoon.goorle.ui.theme.GoorleGrayBD
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -60,10 +61,10 @@ fun CreateScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val scrollState = rememberScrollState()
-    val keyword by remember { mutableStateOf("") }
+    val coroutineScope = rememberCoroutineScope()
 
     BackHandler { dismiss() }
-    
+
     Column(
         modifier = Modifier
             .verticalScroll(scrollState)
@@ -100,9 +101,9 @@ fun CreateScreen(
         Spacer(Modifier.height(16.dp))
         BasicTextField(
             modifier = Modifier.height(36.dp),
-            value = keyword,
+            value = uiState.title,
             textStyle = MaterialTheme.typography.bodyMedium,
-            onValueChange = {},
+            onValueChange = { viewModel.inputTitle(it) },
             singleLine = true,
             decorationBox = { innerTextField ->
                 Surface(
@@ -119,7 +120,7 @@ fun CreateScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Box(modifier = Modifier.weight(1f)) {
-                            if (keyword.isEmpty()) {
+                            if (uiState.title.isEmpty()) {
                                 Text(
                                     stringResource(id = R.string.new_post_search_placeholder),
                                     color = GoorleGray75,
@@ -294,8 +295,12 @@ fun CreateScreen(
         }
         Spacer(modifier = Modifier.height(16.dp))
         Button(
-            onClick = { /*TODO*/ },
-            enabled = uiState.isValid,
+            onClick = {
+                coroutineScope.launch {
+                    delay(1000L)
+                    dismiss()
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(36.dp),

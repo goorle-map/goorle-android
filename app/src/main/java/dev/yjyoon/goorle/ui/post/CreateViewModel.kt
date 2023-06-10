@@ -17,6 +17,10 @@ class CreateViewModel @Inject constructor() : ViewModel() {
     private val _uiState = MutableStateFlow(CreateState())
     val uiState: StateFlow<CreateState> = _uiState.asStateFlow()
 
+    fun inputTitle(title: String) {
+        _uiState.update { it.copy(title = title) }
+    }
+
     fun modifyTag(tag: ThemeType) {
         val tags = _uiState.value.tags
         if (tag in tags) {
