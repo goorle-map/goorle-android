@@ -110,6 +110,7 @@ fun CreateScreen(
         Spacer(Modifier.height(16.dp))
         BasicTextField(
             modifier = Modifier.height(36.dp),
+            enabled = searched.not(),
             value = uiState.title,
             textStyle = MaterialTheme.typography.bodyMedium,
             onValueChange = { viewModel.inputTitle(it) },
