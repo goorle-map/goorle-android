@@ -33,7 +33,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,6 +52,7 @@ import dev.yjyoon.goorle.ui.component.GoorleImagePicker
 import dev.yjyoon.goorle.ui.component.GoorleThemeChip
 import dev.yjyoon.goorle.ui.model.FilterType
 import dev.yjyoon.goorle.ui.model.ThemeType
+import dev.yjyoon.goorle.ui.theme.GoorleBlack
 import dev.yjyoon.goorle.ui.theme.GoorleBlue
 import dev.yjyoon.goorle.ui.theme.GoorleGray75
 import dev.yjyoon.goorle.ui.theme.GoorleGrayBD
@@ -65,6 +69,7 @@ fun CreateScreen(
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
+    var searched by remember { mutableStateOf(false) }
 
     BackHandler { dismiss() }
 
@@ -83,9 +88,10 @@ fun CreateScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = stringResource(id = R.string.new_post_title),
+                text = if (searched) "숲속의 집" else stringResource(id = R.string.new_post_title),
                 style = MaterialTheme.typography.titleSmall,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                color = if (searched) GoorleBlue else GoorleBlack
             )
             CompositionLocalProvider(LocalMinimumInteractiveComponentEnforcement provides false) {
                 IconButton(onClick = dismiss) {
@@ -134,7 +140,10 @@ fun CreateScreen(
                             innerTextField()
                         }
                         IconButton(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                searched = true
+                                viewModel.inputTitle("경기 가평군 설악면 묵안로 182")
+                            },
                             modifier = Modifier.size(24.dp)
                         ) {
                             Icon(
