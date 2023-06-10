@@ -112,4 +112,6 @@
     <string name="songpa">송파구</string>
     <string name="gangnam">강남구</string>
     <string name="seocho">서초구</string>
+
+    <string name="copy">복사</string>
 </resources>

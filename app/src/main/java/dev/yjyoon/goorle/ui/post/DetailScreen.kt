@@ -52,6 +52,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.google.accompanist.pager.HorizontalPagerIndicator
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraPosition
+import com.naver.maps.map.compose.ExperimentalNaverMapApi
+import com.naver.maps.map.compose.Marker
+import com.naver.maps.map.compose.MarkerState
+import com.naver.maps.map.compose.NaverMap
+import com.naver.maps.map.compose.rememberCameraPositionState
 import dev.yjyoon.goorle.R
 import dev.yjyoon.goorle.ui.component.GoorleComment
 import dev.yjyoon.goorle.ui.model.Comment
@@ -65,7 +72,7 @@ import dev.yjyoon.goorle.ui.theme.GoorleGrayE0
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalNaverMapApi::class)
 @Composable
 fun DetailScreen(
     post: Post,
@@ -78,6 +85,10 @@ fun DetailScreen(
     val focusRequester = remember { FocusRequester() }
     var comment by remember { mutableStateOf("") }
     val commentList = remember { mutableStateListOf<Comment>() }
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition(LatLng(post.lat, post.lng), 12.0)
+    }
 
     BackHandler {
         onBack()
@@ -158,24 +169,54 @@ fun DetailScreen(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(text = post.title, style = MaterialTheme.typography.headlineSmall)
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                post.tags.forEach {
-                    Text(
-                        text = "#${stringResource(id = it.tagRes)}",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = GoorleGray75
-                    )
+            Row(verticalAlignment = Alignment.Bottom) {
+                Text(text = post.title, style = MaterialTheme.typography.headlineSmall)
+                Spacer(modifier = Modifier.width(16.dp))
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    post.tags.forEach {
+                        Text(
+                            text = "#${stringResource(id = it.tagRes)}",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = GoorleGray75
+                        )
+                    }
                 }
             }
-            Text(
-                text = post.location,
-                style = MaterialTheme.typography.titleMedium,
-                color = GoorleGray75
-            )
+            NaverMap(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(21 / 9f)
+                    .clip(RoundedCornerShape(24.dp))
+                    .padding(vertical = 4.dp),
+                cameraPositionState = cameraPositionState
+            ) {
+                Marker(
+                    state = MarkerState(position = LatLng(post.lat, post.lng))
+                )
+            }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = post.location,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = GoorleGray75
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_copy),
+                    contentDescription = null,
+                    modifier = Modifier.size(12.dp),
+                    tint = GoorleGray9E
+                )
+                Text(
+                    text = stringResource(id = R.string.copy),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = GoorleGray9E
+                )
+            }
         }
+        Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
