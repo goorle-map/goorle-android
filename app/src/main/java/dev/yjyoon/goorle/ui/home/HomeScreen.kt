@@ -162,7 +162,9 @@ fun HomeScreen(
                                         images = listOf(it.image),
                                         title = it.title,
                                         location = it.location,
-                                        comments = listOf(it)
+                                        comments = listOf(it),
+                                        lng = 126.3786906,
+                                        lat = 33.47604254,
                                     )
                                 )
                             },
