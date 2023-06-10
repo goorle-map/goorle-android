@@ -33,7 +33,7 @@ fun GoorleSection(
     @StringRes titleRes: Int,
     @StringRes subtitleRes: Int,
     textColor: Color = Color.Black,
-    onTap: (() -> Unit)?,
+    onTap: (() -> Unit)? = null,
     items: @Composable RowScope.() -> Unit
 ) {
     val scrollState = rememberScrollState()
