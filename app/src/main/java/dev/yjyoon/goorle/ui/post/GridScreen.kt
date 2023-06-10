@@ -121,6 +121,7 @@ fun GridScreen(
                         )
                     }
                 }
+                else -> {}
             }
         }
     }

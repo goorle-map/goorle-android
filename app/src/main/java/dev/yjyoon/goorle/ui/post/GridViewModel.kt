@@ -30,10 +30,15 @@ class GridViewModel @Inject constructor(
             when (type) {
                 GridViewType.Theme -> R.string.home_section_title_01
                 GridViewType.Region -> R.string.home_section_title_02
+                GridViewType.Picker -> R.string.character
             }
         )
     )
     val uiState: StateFlow<GridState> = _uiState.asStateFlow()
+
+    init {
+        if (type == GridViewType.Picker) loadThemeList(ThemeType.Hanok)
+    }
 
     fun modifyFilter(filter: FilterType) {
         val filters = _uiState.value.filters

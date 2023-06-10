@@ -115,7 +115,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.width(8.dp))
                     GoorleSectionTileC(
                         color = Color(0xFFADDEFF),
-                        onClick = {},
+                        onClick = { navigateToGrid(GridViewType.Picker) },
                         pickCount = 20
                     )
                     GoorleSectionTileC(
